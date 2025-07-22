@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velenok Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050505;
+            overflow: hidden;
+            font-family: 'Orbitron', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+        .grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(255,0,50,0.1) 0, transparent 2px, transparent 100px), repeating-linear-gradient(90deg, rgba(255,0,50,0.1) 0, transparent 2px, transparent 100px);
+            z-index: -1;
+            animation: moveGrid 10s linear infinite;
+        }
+        @keyframes moveGrid {
+            0% { transform: translate(0,0); }
+            100% { transform: translate(-100px, -100px); }
+        }
+        .icon {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid #ff0033;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 0 30px #ff0033;
+            overflow: hidden;
+        }
+        .icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .nickname-container {
+            margin-top: 15px;
+            background: rgba(255, 0, 60, 0.2);
+            padding: 10px 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px #ff0033;
+            backdrop-filter: blur(6px);
+            position: relative;
+            overflow: hidden;
+        }
+        .nickname-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 0, 60, 0.4), transparent);
+            animation: neonMove 3s linear infinite;
+        }
+        @keyframes neonMove {
+            0% { left: -150%; }
+            100% { left: 150%; }
+        }
+        .nickname {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.5em;
+            color: #ff3355;
+            text-shadow: 0 0 10px #ff0033, 0 0 20px #ff6699;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #ff0033, 0 0 20px #ff6699; }
+            to { text-shadow: 0 0 20px #ff99aa, 0 0 40px #ff0033; }
+        }
+        .about {
+            margin: 25px 0;
+            width: 400px;
+            padding: 20px;
+            background: rgba(20, 20, 20, 0.8);
+            border: 2px solid #ff0033;
+            border-radius: 15px;
+            box-shadow: 0 0 30px #ff0033;
+            font-size: 1.1em;
+            line-height: 1.6;
+            animation: hologram 3s infinite alternate;
+        }
+        @keyframes hologram {
+            0% { text-shadow: 0 0 5px #ff3355, 0 0 10px #ff0033; }
+            50% { text-shadow: 0 0 15px #ff6699, 0 0 30px #ff0033; }
+            100% { text-shadow: 0 0 5px #ff3355, 0 0 10px #ff0033; }
+        }
+        .about span {
+            color: #ff6699;
+        }
+        .socials {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+        }
+        .socials a {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: radial-gradient(circle at top left, #ff0033, #990022);
+            border: 2px solid #ff3355;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px #ff0033;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .socials a:hover {
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: 0 0 40px #ff3355;
+        }
+        .socials img {
+            width: 40px;
+            height: 40px;
+            filter: brightness(0) invert(1);
+        }
+        .socials a.funpay img {
+            filter: none;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particles"></canvas>
+    <div class="grid"></div>
+    <div class="icon">
+        <img src="https://img10.joyreactor.com/pics/post/anime-fandoms-Evangelion-4268946.gif" alt="Profile GIF">
+    </div>
+    <div class="nickname-container">
+        <div class="nickname">Velenok</div>
+    </div>
+    <div class="about">
+        Привет! Я <strong>Velenok</strong> (Павел), мне 16 лет. Увлекаюсь <span style="color:#ff5555;">Minecraft</span>, изучаю <span style="color:#ff4444;">веб-дизайн</span> и активно развиваюсь в <span style="color:#ff2222;">кодинге</span> сайтов. Стремлюсь создавать стильные и современные проекты с душой.
+    </div>
+    <div class="socials">
+        <a href="https://discord.com/users/660042310511493123" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord">
+        </a>
+        <a href="https://t.me/ipavelid" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" alt="Telegram">
+        </a>
+        <a href="https://funpay.com/users/15457814/" target="_blank" class="funpay">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/5abcb0dd-de42-4560-ae3f-782fe58090ba-profile_image-70x70.png" alt="FunPay">
+        </a>
+    </div>
+    <script>
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        for (let i = 0; i < 150; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 1.5,
+                vy: (Math.random() - 0.5) * 1.5,
+                size: Math.random() * 2 + 1,
+                opacity: Math.random()
+            });
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                ctx.fillStyle = `rgba(${255}, ${Math.floor(Math.random()*50)}, ${Math.floor(Math.random()*50)}, ${p.opacity})`;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
